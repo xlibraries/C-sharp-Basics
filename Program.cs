@@ -23,8 +23,11 @@ namespace Delegates
         {
             FileStream fs = new FileStream("P:\\PersistentSystems\\Demo\\Serilization.txt", FileMode.OpenOrCreate);
             BinaryFormatter bn = new BinaryFormatter();
-            Student s = new Student(101, "Xlib");
-            bn.Serialize(fs, s);
+            Student student = (Student)bn.Deserialize(fs);
+            Console.WriteLine("Roll No.: " + student.rollNo);
+            Console.WriteLine("Name:" + student.name);
+            //Student s = new Student(101, "Xlib");
+            //bn.Serialize(fs, s);
             fs.Close();
             Console.Read();
 
