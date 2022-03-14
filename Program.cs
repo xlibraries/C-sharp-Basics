@@ -5,6 +5,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml.Serialization;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Collections;
 
 namespace Delegates
 {
@@ -40,9 +41,15 @@ namespace Delegates
                 Location = "Katangi"
             });
             string result = JsonConvert.SerializeObject(list);
+            //string answer = JsonConvert.DeserializeObject();
             Console.WriteLine(result);
-
-
+            List<Student> res2 = JsonConvert.DeserializeObject<List<Student>>(result);
+            foreach(var i in res2)
+            {
+                Console.WriteLine(i.Rollno);
+                Console.WriteLine(i.Name);
+                Console.WriteLine(i.Location);
+            }
 
             //FileStream fs = new FileStream("P:\\PersistentSystems\\Demo\\Serilization.txt", FileMode.OpenOrCreate);
             //BinaryFormatter bn = new BinaryFormatter();
