@@ -10,11 +10,26 @@ namespace Delegates
 {
     internal class Program
     {
+        static void Work1()
+        {
+            for(int i = 0; i < 10; i++)
+            {
+                Console.WriteLine("Kaccha Papad Pakka Papad");
+            }
+        }
+        static void Work2()
+        {
+            for(int i = 0; i < 10; i++)
+            {
+                Console.WriteLine("Pake padh pe paka patita  pintu padke paka papita");
+            }
+        }
         static void Main(string[] args) 
         {
-            Thread thread = Thread.CurrentThread;
-            thread.Name = "Main ";
-            Console.WriteLine(thread.Name);
+            Thread thread1 = new Thread(Work1);
+            Thread thread2 = new Thread(Work2);
+            thread1.Start();
+            thread2.Start();
             Console.Read();
         }
     }
