@@ -3,19 +3,28 @@ using System.IO;
 using System.Text;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml.Serialization;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Delegates
 {
     [Serializable]
     public class Student
     {
-        public int rollNo;
-        public string name;
-
-        public Student()
+        public int Rollno
         {
-            this.rollNo = rollNo;
-            this.name = name;
+            get;
+            set;
+        }
+        public string Name
+        {
+            get;
+            set;
+        }
+        public string Location
+        {
+            get;
+            set;
         }
     }
     
@@ -23,14 +32,26 @@ namespace Delegates
     {
         static void Main(string[] args)
         {
+            List<Student> list = new List<Student>();
+            list.Add(new Student()
+            {
+                Rollno = 101,
+                Name = "Xlib",
+                Location = "Katangi"
+            });
+            string result = JsonConvert.SerializeObject(list);
+            Console.WriteLine(result);
+
+
+
             //FileStream fs = new FileStream("P:\\PersistentSystems\\Demo\\Serilization.txt", FileMode.OpenOrCreate);
             //BinaryFormatter bn = new BinaryFormatter();
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(Student));
+            //XmlSerializer xmlSerializer = new XmlSerializer(typeof(Student));
             //TextWriter textWriter = new StreamWriter("P:\\PersistentSystems\\Demo\\XmlSerilizer.txt");
-            TextReader textReader = new StreamReader("P:\\PersistentSystems\\Demo\\XmlSerilizer.txt");
-            Student student = (Student)xmlSerializer.Deserialize(textReader);
-            Console.WriteLine(student.name);
-            Console.WriteLine(student.rollNo);
+            //TextReader textReader = new StreamReader("P:\\PersistentSystems\\Demo\\XmlSerilizer.txt");
+            //Student student = (Student)xmlSerializer.Deserialize(textReader);
+            //Console.WriteLine(student.name);
+            //Console.WriteLine(student.rollNo);
 
             //xmlSerializer.Serialize(textWriter, student);
             //textWriter.Close();
