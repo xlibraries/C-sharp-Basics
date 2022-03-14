@@ -15,23 +15,26 @@ namespace Delegates
             for(int i = 0; i < 10; i++)
             {
                 Console.WriteLine("Kaccha Papad Pakka Papad");
+                Thread.Sleep(200);
             }
         }
-        //static void Work2()
-        //{
-        //    for(int i = 0; i < 10; i++)
-        //    {
-        //        Console.WriteLine("Pake padh pe paka patita  pintu padke paka papita");
-        //    }
-        //}
+        static void Work2()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine("Pake padh pe paka patita  pintu padke paka papita");
+                Thread.Sleep(200);
+            }
+        }
         static void Main(string[] args) 
         {
             Thread thread1 = new Thread(Work1);
-            //Thread thread2 = new Thread(Work2);
+            Thread thread2 = new Thread(Work2);
             thread1.Start();
+            thread2.Start();
             //thread1.Join();
             Console.WriteLine("Churaliya");
-            //thread2.Start();
+            
             //thread2.Join();
             Console.Read();
         }
