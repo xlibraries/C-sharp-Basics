@@ -1,76 +1,21 @@
 ﻿using System;
 using System.IO;
 using System.Text;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Xml.Serialization;
 using System.Collections.Generic;
-using Newtonsoft.Json;
 using System.Collections;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace Delegates
 {
-    [Serializable]
-    public class Student
-    {
-        public int Rollno
-        {
-            get;
-            set;
-        }
-        public string Name
-        {
-            get;
-            set;
-        }
-        public string Location
-        {
-            get;
-            set;
-        }
-    }
-    
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main(string[] args) 
         {
-            List<Student> list = new List<Student>();
-            list.Add(new Student()
-            {
-                Rollno = 101,
-                Name = "Xlib",
-                Location = "Katangi"
-            });
-            string result = JsonConvert.SerializeObject(list);
-            //string answer = JsonConvert.DeserializeObject();
-            Console.WriteLine(result);
-            List<Student> res2 = JsonConvert.DeserializeObject<List<Student>>(result);
-            foreach(var i in res2)
-            {
-                Console.WriteLine(i.Rollno);
-                Console.WriteLine(i.Name);
-                Console.WriteLine(i.Location);
-            }
-
-            //FileStream fs = new FileStream("P:\\PersistentSystems\\Demo\\Serilization.txt", FileMode.OpenOrCreate);
-            //BinaryFormatter bn = new BinaryFormatter();
-            //XmlSerializer xmlSerializer = new XmlSerializer(typeof(Student));
-            //TextWriter textWriter = new StreamWriter("P:\\PersistentSystems\\Demo\\XmlSerilizer.txt");
-            //TextReader textReader = new StreamReader("P:\\PersistentSystems\\Demo\\XmlSerilizer.txt");
-            //Student student = (Student)xmlSerializer.Deserialize(textReader);
-            //Console.WriteLine(student.name);
-            //Console.WriteLine(student.rollNo);
-
-            //xmlSerializer.Serialize(textWriter, student);
-            //textWriter.Close();
-
-            //Student student = (Student)bn.Deserialize(fs);
-            //Console.WriteLine("Roll No.: " + student.rollNo);
-            //Console.WriteLine("Name:" + student.name);
-            //Student s = new Student(101, "Xlib");
-            //bn.Serialize(fs, s);
-            //fs.Close();
+            Thread thread = Thread.CurrentThread;
+            thread.Name = "Main ";
+            Console.WriteLine(thread.Name);
             Console.Read();
-
         }
     }
 }
@@ -89,7 +34,70 @@ namespace Delegates
 
 
 
+//[Serializable]
+//public class Student
+//{
+//    public int Rollno
+//    {
+//        get;
+//        set;
+//    }
+//    public string Name
+//    {
+//        get;
+//        set;
+//    }
+//    public string Location
+//    {
+//        get;
+//        set;
+//    }
+//}
 
+//internal class Program
+//{
+//    static void Main(string[] args)
+//    {
+//        List<Student> list = new List<Student>();
+//        list.Add(new Student()
+//        {
+//            Rollno = 101,
+//            Name = "Xlib",
+//            Location = "Katangi"
+//        });
+//        string result = JsonConvert.SerializeObject(list);
+//        //string answer = JsonConvert.DeserializeObject();
+//        Console.WriteLine(result);
+//        List<Student> res2 = JsonConvert.DeserializeObject<List<Student>>(result);
+//        foreach(var i in res2)
+//        {
+//            Console.WriteLine(i.Rollno);
+//            Console.WriteLine(i.Name);
+//            Console.WriteLine(i.Location);
+//        }
+
+//        //FileStream fs = new FileStream("P:\\PersistentSystems\\Demo\\Serilization.txt", FileMode.OpenOrCreate);
+//        //BinaryFormatter bn = new BinaryFormatter();
+//        //XmlSerializer xmlSerializer = new XmlSerializer(typeof(Student));
+//        //TextWriter textWriter = new StreamWriter("P:\\PersistentSystems\\Demo\\XmlSerilizer.txt");
+//        //TextReader textReader = new StreamReader("P:\\PersistentSystems\\Demo\\XmlSerilizer.txt");
+//        //Student student = (Student)xmlSerializer.Deserialize(textReader);
+//        //Console.WriteLine(student.name);
+//        //Console.WriteLine(student.rollNo);
+
+//        //xmlSerializer.Serialize(textWriter, student);
+//        //textWriter.Close();
+
+//        //Student student = (Student)bn.Deserialize(fs);
+//        //Console.WriteLine("Roll No.: " + student.rollNo);
+//        //Console.WriteLine("Name:" + student.name);
+//        //Student s = new Student(101, "Xlib");
+//        //bn.Serialize(fs, s);
+//        //fs.Close();
+//        Console.Read();
+
+//    }
+//}
 
 
 
