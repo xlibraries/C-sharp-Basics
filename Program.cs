@@ -2,15 +2,17 @@
 using System.IO;
 using System.Text;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Xml.Serialization;
 
 namespace Delegates
 {
     [Serializable]
-    class Student
+    public class Student
     {
         public int rollNo;
         public string name;
-        public Student(int rollNo, string name)
+
+        public Student()
         {
             this.rollNo = rollNo;
             this.name = name;
@@ -21,14 +23,20 @@ namespace Delegates
     {
         static void Main(string[] args)
         {
-            FileStream fs = new FileStream("P:\\PersistentSystems\\Demo\\Serilization.txt", FileMode.OpenOrCreate);
-            BinaryFormatter bn = new BinaryFormatter();
-            Student student = (Student)bn.Deserialize(fs);
-            Console.WriteLine("Roll No.: " + student.rollNo);
-            Console.WriteLine("Name:" + student.name);
+            //FileStream fs = new FileStream("P:\\PersistentSystems\\Demo\\Serilization.txt", FileMode.OpenOrCreate);
+            //BinaryFormatter bn = new BinaryFormatter();
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(Student));
+            TextWriter textWriter = new StreamWriter("P:\\PersistentSystems\\Demo\\XmlSerilizer.txt");
+            Student student = new Student();
+            xmlSerializer.Serialize(textWriter, student);
+            textWriter.Close();
+
+            //Student student = (Student)bn.Deserialize(fs);
+            //Console.WriteLine("Roll No.: " + student.rollNo);
+            //Console.WriteLine("Name:" + student.name);
             //Student s = new Student(101, "Xlib");
             //bn.Serialize(fs, s);
-            fs.Close();
+            //fs.Close();
             Console.Read();
 
         }
