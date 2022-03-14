@@ -26,10 +26,14 @@ namespace Delegates
             //FileStream fs = new FileStream("P:\\PersistentSystems\\Demo\\Serilization.txt", FileMode.OpenOrCreate);
             //BinaryFormatter bn = new BinaryFormatter();
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(Student));
-            TextWriter textWriter = new StreamWriter("P:\\PersistentSystems\\Demo\\XmlSerilizer.txt");
-            Student student = new Student();
-            xmlSerializer.Serialize(textWriter, student);
-            textWriter.Close();
+            //TextWriter textWriter = new StreamWriter("P:\\PersistentSystems\\Demo\\XmlSerilizer.txt");
+            TextReader textReader = new StreamReader("P:\\PersistentSystems\\Demo\\XmlSerilizer.txt");
+            Student student = (Student)xmlSerializer.Deserialize(textReader);
+            Console.WriteLine(student.name);
+            Console.WriteLine(student.rollNo);
+
+            //xmlSerializer.Serialize(textWriter, student);
+            //textWriter.Close();
 
             //Student student = (Student)bn.Deserialize(fs);
             //Console.WriteLine("Roll No.: " + student.rollNo);
