@@ -33,7 +33,7 @@ namespace Delegates
         //{
             //WriteText();
             //ReadText();
-            //string text = "Hello kon bol raha hai" + "Hum bol rahe hai" + "Hum Kon" + "Bhenc*** phone pakdhao unko";
+            //string text = "Hello kon bol raha hai" + "Hum bol rahe hai" + "Hum Kon" + " phone pakdhao unko";
             //StringBuilder sb = new();
             //StringWriter sw = new(sb);
             //sw.WriteLine(text);
