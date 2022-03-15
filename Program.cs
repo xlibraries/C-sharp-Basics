@@ -1,53 +1,40 @@
-﻿using System;
+﻿#define Debug
+
+using System;
 using System.IO;
 using System.Text;
 using System.Collections.Generic;
 using System.Collections;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Diagnostics;
 
 namespace Delegates
 {
+    public class MyClass
+    {
+        [Conditional("Debug")]
+        public static void Message(string s)
+        {
+            Console.WriteLine(s);
+        }
+    }
     internal class Program
     {
-        public static async Task CallMethod()
+        static void Method1()
         {
-            Task<int> ob = Method1();
+            MyClass.Message("1st");
             Method2();
-            int count = await ob;
-            Method3(count);
         }
-        public static async Task<int> Method1()
+        static void Method2()
         {
-            int count = 1;
-            await Task.Run(() =>
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    Console.WriteLine("Method1");
-                    Task.Delay(100).Wait();
-                    count++;
-                }
-            });
-            return count;
+            MyClass.Message("2nd");
         }
 
-        public static void Method2()
-        {
-            for (int i = 0; i < 4; i++)
-            {
-                Console.WriteLine("Method2");
-                Task.Delay(100).Wait();
-            }
-        }
-        public static void Method3(int count)
-        {
-            Console.WriteLine("Total Count: " + count);
-            
-        }
         static void Main(string[] args)
         {
-            _ = CallMethod();
+            Console.WriteLine("Main mai hu");
+            Method1();
             Console.Read();
         }
     }
@@ -57,7 +44,46 @@ namespace Delegates
 
 
 
+//public static async Task CallMethod()
+//{
+//    Task<int> ob = Method1();
+//    Method2();
+//    int count = await ob;
+//    Method3(count);
+//}
+//public static async Task<int> Method1()
+//{
+//    int count = 1;
+//    await Task.Run(() =>
+//    {
+//        for (int i = 0; i < 4; i++)
+//        {
+//            Console.WriteLine("Method1");
+//            Task.Delay(100).Wait();
+//            count++;
+//        }
+//    });
+//    return count;
+//}
 
+//public static void Method2()
+//{
+//    for (int i = 0; i < 4; i++)
+//    {
+//        Console.WriteLine("Method2");
+//        Task.Delay(100).Wait();
+//    }
+//}
+//public static void Method3(int count)
+//{
+//    Console.WriteLine("Total Count: " + count);
+
+//}
+//static void Main(string[] args)
+//{
+//    _ = CallMethod();
+//    Console.Read();
+//}
 
 
 
