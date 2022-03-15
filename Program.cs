@@ -11,30 +11,24 @@ using System.Diagnostics;
 
 namespace Delegates
 {
-    public class MyClass
-    {
-        [Conditional("Debug")]
-        public static void Message(string s)
-        {
-            Console.WriteLine(s);
-        }
-    }
     internal class Program
     {
-        static void Method1()
+        [Obsolete("Do not use this use it's replacement", true)]
+        static void OldMethod()
         {
-            MyClass.Message("1st");
-            Method2();
+            Console.WriteLine("I am old, old is gold");
+            //Method2();
         }
-        static void Method2()
+        static void NewMethod()
         {
-            MyClass.Message("2nd");
+            Console.WriteLine("Time to replace old");
         }
 
         static void Main(string[] args)
         {
             Console.WriteLine("Main mai hu");
-            Method1();
+            //OldMethod();
+            NewMethod();
             Console.Read();
         }
     }
