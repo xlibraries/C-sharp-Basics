@@ -16,18 +16,16 @@ namespace Delegates
         [Obsolete("Do not use this use it's replacement", true)]
         static void OldMethod()
         {
-            Console.WriteLine("I am old, old is gold");
-            //Method2();
+            Console.WriteLine("Hum Jeth hai");
         }
         static void NewMethod()
         {
-            Console.WriteLine("Time to replace old");
+            Console.WriteLine("Thumara Ghungat kaha hai");
         }
 
         static void Main(string[] args)
         {
             Console.WriteLine("Main mai hu");
-            //OldMethod();
             NewMethod();
             Console.Read();
         }
