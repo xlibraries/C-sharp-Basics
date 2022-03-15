@@ -20,8 +20,11 @@ namespace Delegates
         }
         static void Main()
         {
-            Task task = new Task(Print);
-            task.Start();
+            Task task = Task.Run(() =>
+            {
+                Print();
+            });
+            //task.Start();
             task.Wait();
             Console.WriteLine("Main Thread Completed");
             Console.Read();
