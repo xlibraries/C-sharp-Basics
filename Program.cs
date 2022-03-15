@@ -10,34 +10,20 @@ namespace Delegates
 {
     internal class Program
     {
-        static void Work1()
+        static void Print()
         {
-            for(int i = 0; i < 10; i++)
+            for(int i = 0; i < 4; i++)
             {
-                Console.WriteLine("Kaccha Papad Pakka Papad");
-                //Thread.Sleep(200);
+                Console.WriteLine("ith Value: " + i);
             }
-            Console.WriteLine("Humm bhi  khataam");
+            Console.WriteLine("Child Thread Completted");
         }
-        //static void Work2()
-        //{
-        //    for (int i = 0; i < 10; i++)
-        //    {
-        //        Console.WriteLine("Pake padh pe paka patita  pintu padke paka papita");
-        //        Thread.Sleep(200);
-        //    }
-        //}
-        static void Main(string[] args) 
+        static void Main()
         {
-            Thread thread1 = new Thread(Work1);
-            //Thread thread2 = new Thread(Work2);
-            thread1.Start();
-            thread1.IsBackground = true;
-            //thread2.Start();
-            //thread1.Join();
-            Console.WriteLine("Khatam");
-            
-            //thread2.Join();
+            Task task = new Task(Print);
+            task.Start();
+            task.Wait();
+            Console.WriteLine("Main Thread Completed");
             Console.Read();
         }
     }
@@ -51,7 +37,36 @@ namespace Delegates
 
 
 
+//static void Work1()
+//{
+//    for (int i = 0; i < 10; i++)
+//    {
+//        Console.WriteLine("Kaccha Papad Pakka Papad");
+//        //Thread.Sleep(200);
+//    }
+//    Console.WriteLine("Humm bhi  khataam");
+//}
+////static void Work2()
+////{
+////    for (int i = 0; i < 10; i++)
+////    {
+////        Console.WriteLine("Pake padh pe paka patita  pintu padke paka papita");
+////        Thread.Sleep(200);
+////    }
+////}
+//static void Main(string[] args)
+//{
+//    Thread thread1 = new Thread(Work1);
+//    //Thread thread2 = new Thread(Work2);
+//    thread1.Start();
+//    thread1.IsBackground = true;
+//    //thread2.Start();
+//    //thread1.Join();
+//    Console.WriteLine("Khatam");
 
+//    //thread2.Join();
+//    Console.Read();
+//}
 
 
 
