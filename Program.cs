@@ -10,23 +10,44 @@ namespace Delegates
 {
     internal class Program
     {
-        static void Print()
+        public static async Task CallMethod()
         {
-            for(int i = 0; i < 4; i++)
-            {
-                Console.WriteLine("ith Value: " + i);
-            }
-            Console.WriteLine("Child Thread Completted");
+            Task<int> ob = Method1();
+            Method2();
+            int count = await ob;
+            Method3(count);
         }
-        static void Main()
+        public static async Task<int> Method1()
         {
-            Task task = Task.Run(() =>
+            int count = 1;
+            await Task.Run(() =>
             {
-                Print();
+                for (int i = 0; i < 4; i++)
+                {
+                    Console.WriteLine("Method1");
+                    Task.Delay(100).Wait();
+                    count++;
+                }
             });
-            //task.Start();
-            task.Wait();
-            Console.WriteLine("Main Thread Completed");
+            return count;
+        }
+
+        public static void Method2()
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                Console.WriteLine("Method2");
+                Task.Delay(100).Wait();
+            }
+        }
+        public static void Method3(int count)
+        {
+            Console.WriteLine("Total Count: " + count);
+            
+        }
+        static void Main(string[] args)
+        {
+            CallMethod();
             Console.Read();
         }
     }
