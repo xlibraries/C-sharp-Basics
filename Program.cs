@@ -47,7 +47,7 @@ namespace Delegates
         }
         static void Main(string[] args)
         {
-            CallMethod();
+            _ = CallMethod();
             Console.Read();
         }
     }
