@@ -39,7 +39,7 @@ namespace Delegates
         private int rollNo;
         private string studentName;
 
-        [MyAttribute("Modifier","Return something")]
+        [MyAttribute("Modifier","Assign the student details")]
         public void setDetails(int r, string s)
         {
             rollNo = r;
