@@ -11,22 +11,62 @@ using System.Diagnostics;
 
 namespace Delegates
 {
+    [AttributeUsage(AttributeTargets.All)]
+    public class MyAttribute: Attribute
+    {
+        private string name;
+        private string action;
+
+        public MyAttribute(string name, string action)
+        {
+            this.name = name;
+            this.action = action;
+        }
+
+        public string Name
+        {
+            get { return name; }
+        }
+
+        public string Action
+        {
+            get { return action; }
+        }
+    }
+
+    class Student
+    {
+        private int rollNo;
+        private string studentName;
+
+        [MyAttribute("Modifier","Return something")]
+        public void setDetails(int r, string s)
+        {
+            rollNo = r;
+            studentName = s;
+        }
+        [MyAttribute("Modifier", "Return the roll number")]
+        public int getRollNo()
+        {
+            return rollNo;
+        }
+        [MyAttribute("Modifier", "Return the student name")]
+        public string getStudentName()
+        {
+            return studentName;
+        }
+
+    }
+
     internal class Program
     {
-        [Obsolete("Do not use this use it's replacement", true)]
-        static void OldMethod()
-        {
-            Console.WriteLine("Hum Jeth hai");
-        }
-        static void NewMethod()
-        {
-            Console.WriteLine("Thumara Ghungat kaha hai");
-        }
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Main mai hu");
-            NewMethod();
+            Student student = new Student();
+            student.setDetails(101, "Xlib");
+            Console.WriteLine("Roll Number is: " + student.getRollNo());
+            Console.WriteLine("Name of Student is: " + student.getStudentName());
             Console.Read();
         }
     }
