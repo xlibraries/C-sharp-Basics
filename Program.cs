@@ -1,13 +1,4 @@
-﻿#define Debug
-
-using System;
-using System.IO;
-using System.Text;
-using System.Collections.Generic;
-using System.Collections;
-using System.Threading.Tasks;
-using System.Threading;
-using System.Diagnostics;
+﻿using System;
 using System.Reflection;
 
 namespace Delegates
@@ -63,7 +54,6 @@ namespace Delegates
                 }
             }
             Console.ReadLine();
-
         }
     }
 }
