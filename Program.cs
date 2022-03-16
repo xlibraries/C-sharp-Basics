@@ -8,22 +8,62 @@ using System.Collections;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace Delegates
 {
+    class Student
+    {
+        public int RollNo
+        {
+            get;
+            set;
+        }
+        public string Name
+        {
+            get;
+            set;
+        }
+        public Student()
+        {
+            RollNo = 0;
+            Name = string.Empty;
+        }
+        public Student(int rno, string n)
+        {
+            RollNo = rno;
+            Name = n;
+        }
+        public void display()
+        {
+            Console.WriteLine("Roll Number :" + RollNo);
+            Console.WriteLine("Name :" + Name);
+        }
+    }
+
     internal class Program
     {
-
         static void Main(string[] args)
         {
-            Type type = typeof(string);
-            Console.WriteLine("Name: " + type.Name);
-            Console.WriteLine("Full Name: " + type.FullName);
-            Console.WriteLine("Namespace: " + type.Namespace);
-            Console.WriteLine("Base Type: " + type.BaseType);
-            Console.WriteLine("Check: " + type.GUID);
-            Console.WriteLine("Serilizable: " + type.IsSerializable);
-            Console.Read();
+            Assembly exec = Assembly.GetExecutingAssembly();
+            Type[] types = exec.GetTypes();
+            foreach (var item in types)
+            {
+                Console.WriteLine("class : " + item.FullName);
+                MethodInfo[] methods = item.GetMethods();
+                foreach (var method in methods)
+                {
+                    Console.WriteLine("Method name: " + method.Name);
+                    ParameterInfo[] parameters = method.GetParameters();
+                    foreach (var arg in parameters)
+                    {
+                        Console.WriteLine("Parameters :  " + arg.Name);
+                        Console.WriteLine("Parameters :  " + arg.ParameterType);
+                    }
+                }
+            }
+            Console.ReadLine();
+
         }
     }
 }
